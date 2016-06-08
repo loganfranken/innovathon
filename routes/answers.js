@@ -1,9 +1,15 @@
 var express = require('express');
 var router = express.Router();
+var questionRouter = require('../lib/question-router')
 
-/* GET users listing. */
 router.get('/', function(req, res) {
-  res.send('respond with a resource');
+
+  var question = req.query['question'];
+
+  questionRouter(question, function(answer) {
+    res.send(answer);
+  });
+
 });
 
 module.exports = router;

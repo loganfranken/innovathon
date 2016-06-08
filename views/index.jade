@@ -1,5 +1,8 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  h1= "Hey, UCSB!"
+  form(id="question-form")
+    input(type="text", id="question")
+    input(type="submit", value="Ask")
+    div(id="response")
