@@ -25,24 +25,29 @@ recognition.onresult = function(event) {
     }
     else{
         $("#question").val(final_transcript);
+        recognition.stop();
     }
 };
 
 recognition.onend = function(event){
-    $("#isRecording").val("false")
-    $("body").css("background-color", "white");
+    recStop();
+    $("#question-form").submit();
 };
 
 function startSpeechRec(){
     if($("#isRecording").val() == "true"){
-        $("#isRecording").val("false")
-        $("body").css("background-color", "white");
         recognition.stop();
     }
     else{
+        
         $("body").css("background-color", "pink");
         $("#isRecording").val("true")
         recognition.lang = "en-US";
         recognition.start();
     }
+}
+
+function recStop(){
+        $("#isRecording").val("false")
+        $("body").css("background-color", "white");
 }
