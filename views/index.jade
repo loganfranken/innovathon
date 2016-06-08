@@ -1,8 +1,10 @@
 extends layout
 
 block content
-  h1= "Hey, UCSB!"
-  form(id="question-form")
-    input(type="text", id="question")
-    input(type="submit", value="Ask")
-    div(id="response")
+  div(id="content")
+    h1= "Hey UCSB!"
+    form(id="question-form")
+      input(type="text", id="question")
+      input(type="submit", value="Ask")
+      div(id="response")
+      div(id="loading")

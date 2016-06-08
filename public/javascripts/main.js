@@ -4,6 +4,9 @@ require(["esri/geometry/webMercatorUtils"], function(webMercatorUtils) {
 
     $('#question-form').on('submit', function(event) {
 
+      var $response = $('#response');
+      $response.fadeOut();
+
       event.preventDefault();
 
       var question = $('#question').val();
@@ -15,11 +18,13 @@ require(["esri/geometry/webMercatorUtils"], function(webMercatorUtils) {
         {
           var coordinates = /-?[0-9]+.[0-9]+,-?[0-9]+.[0-9]+/.exec(jsonData)[0].split(',');
           var latLong = webMercatorUtils.xyToLngLat(coordinates[0], coordinates[1]);
-          $('#response').html('<iframe width="500" height="500" src="https://www.google.com/maps/embed/v1/view?key=AIzaSyBjpNq9goKydvdeU63xYsbUAVETtwQJNs4&center=' + latLong[1] + ',' + latLong[0] + '&zoom=19">');
+          $response.html('<iframe width="100%" height="500" src="https://www.google.com/maps/embed/v1/view?key=AIzaSyBjpNq9goKydvdeU63xYsbUAVETtwQJNs4&center=' + latLong[1] + ',' + latLong[0] + '&zoom=19">');
         }
         else {
-          $('#response').html(data);
+          $response.html(data);
         }
+
+        $response.fadeIn();
 
       });
 
