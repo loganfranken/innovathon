@@ -18,7 +18,16 @@ require(["esri/geometry/webMercatorUtils"], function(webMercatorUtils) {
         {
           var coordinates = /-?[0-9]+.[0-9]+,-?[0-9]+.[0-9]+/.exec(jsonData)[0].split(',');
           var latLong = webMercatorUtils.xyToLngLat(coordinates[0], coordinates[1]);
-          speak('Here is a map of ' + data.label);
+
+          if(data.category === "section" || data.category === "class")
+          {
+            speak('Here is where ' + data.label + ' takes place');
+          }
+          else
+          {
+            speak('Here is a map of ' + data.label);
+          }
+
           $response.html('<iframe width="100%" height="500" src="https://www.google.com/maps/embed/v1/view?key=AIzaSyBjpNq9goKydvdeU63xYsbUAVETtwQJNs4&center=' + latLong[1] + ',' + latLong[0] + '&zoom=19">');
         }
         else {
