@@ -17,10 +17,10 @@ recognition.onresult = function(event) {
             final_transcript += event.results[i][0].transcript;
         }
         else {
-        	$("#speech-input").text += event.results[i][0].transcript;
+        	$("#question").text += event.results[i][0].transcript;
       }
     }
-    alert("final_transcript");
+    alert(final_transcript);
 };
 
 function startSpeechRec(){
