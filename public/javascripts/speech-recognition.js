@@ -35,11 +35,13 @@ recognition.onend = function(event){
 };
 
 function startSpeechRec(){
+  window.speechSynthesis.cancel();
+
     if($("#isRecording").val() == "true"){
         recognition.stop();
     }
     else{
-        
+
         $("body").css("background-color", "pink");
         $("#isRecording").val("true")
         recognition.lang = "en-US";
