@@ -1,10 +1,12 @@
 extends layout
 
 block content
-  div(id="content")
+  div(id="header")
     h1= "Hey, UCSB!"
+  div(id="content")
     form(id="question-form")
       input(id="isRecording", type="hidden", value="false")
       input(type="text", id="question")
       img(id="mic-button", onclick="startSpeechRec()", src="http://i.imgur.com/cHidSVu.gif")
+      span(class="instructions") Tap mic to ask a question
       div(id="response")

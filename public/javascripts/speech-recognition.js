@@ -25,8 +25,8 @@ recognition.onresult = function(event) {
     }
     else{
         $("#question").val(final_transcript);
-        recognition.stop();
     }
+    setTimeout(function(){recognition.stop()}, 3000);
 };
 
 recognition.onend = function(event){
