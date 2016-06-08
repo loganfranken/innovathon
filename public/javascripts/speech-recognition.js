@@ -8,7 +8,6 @@ recognition.onStart = function(){
         return;
     }
     recognizing = true;
-    recognition.lang = "en-US";
 }
 
 recognition.onresult = function(event) {
@@ -25,5 +24,6 @@ recognition.onresult = function(event) {
 };
 
 function startSpeechRec(){
+    recognition.lang = "en-US";
     recognition.start();
 }
