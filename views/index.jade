@@ -3,6 +3,8 @@ extends layout
 block content
   h1= "Hey, UCSB!"
   form(id="question-form")
+    input(id="isRecording", type="hidden", value="false")
     input(type="text", id="question")
+    img(id="mic-button", onclick="startSpeechRec()", src="http://i.imgur.com/cHidSVu.gif")
     input(type="submit", value="Ask")
     div(id="response")

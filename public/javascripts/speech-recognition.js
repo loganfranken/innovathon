@@ -14,16 +14,35 @@ recognition.onresult = function(event) {
     var final_transcript = "";
     for (var i = event.resultIndex; i < event.results.length; ++i) {
         if (event.results[i].isFinal) {
-            $("#question").text += event.results[i][0].transcript;
+            final_transcript += event.results[i][0].transcript;
         }
         else {
-        	$("#question").text += event.results[i][0].transcript;
+        	final_transcript += event.results[i][0].transcript;
       }
     }
-    alert(final_transcript);
+    if(final_transcript == ""){
+        $("#question").val("no results :(");
+    }
+    else{
+        $("#question").val(final_transcript);
+    }
+};
+
+recognition.onend = function(event){
+    $("#isRecording").val("false")
+    $("body").css("background-color", "white");
 };
 
 function startSpeechRec(){
-    recognition.lang = "en-US";
-    recognition.start();
+    if($("#isRecording").val() == "true"){
+        $("#isRecording").val("false")
+        $("body").css("background-color", "white");
+        recognition.stop();
+    }
+    else{
+        $("body").css("background-color", "pink");
+        $("#isRecording").val("true")
+        recognition.lang = "en-US";
+        recognition.start();
+    }
 }
