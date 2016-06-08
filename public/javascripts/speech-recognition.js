@@ -14,7 +14,7 @@ recognition.onresult = function(event) {
     var final_transcript = "";
     for (var i = event.resultIndex; i < event.results.length; ++i) {
         if (event.results[i].isFinal) {
-            final_transcript += event.results[i][0].transcript;
+            $("#question").text += event.results[i][0].transcript;
         }
         else {
         	$("#question").text += event.results[i][0].transcript;
